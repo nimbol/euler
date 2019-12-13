@@ -103,20 +103,15 @@ def sieve(limit):
     sq_limit = int(limit ** 0.5)   # smart limit
     listlen = limit / 2 - 1
     lot = [True] * listlen # list represents 3, 5, 7, 9, etc
-    n, i = 3, 0  # number and its position in the lot
     # Start sifting!
-    while n <= sq_limit:
+    for i, n in enumerate(xrange(3, sq_limit + 1, 2)):
         if lot[i]:
             yield n  # n is prime, sift out multiples of n
             for pos in xrange(i + (i+1)*n, listlen, n):
                 lot[pos] = False
-        n += 2
-        i += 1
-    while i < listlen:
+    for i, n in enumerate(xrange(n + 2, limit, 2), start=i+1):
         if lot[i]:
             yield n
-        n += 2
-        i += 1
 
 def smart_sieve(limit):
     """
