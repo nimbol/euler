@@ -3,18 +3,30 @@ fn main() {
 }
 
 fn solve(limit: u32) -> u32 {
-    let mut seq = vec![0, 1];
+    Fibonacci::new().take_while(|x| x < &limit).step_by(3).sum()
+}
 
-    loop {
-        let n = seq.iter().rev().take(2).sum();
-        if n < limit {
-            seq.push(n);
-        } else {
-            break;
-        }
+struct Fibonacci {
+    a: u32,
+    b: u32,
+}
+
+impl Fibonacci {
+    fn new() -> Fibonacci {
+        Fibonacci { a: 0, b: 1 }
     }
+}
 
-    seq.iter().filter(|x| **x % 2 == 0).sum()
+impl Iterator for Fibonacci {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<u32> {
+        let result = self.a;
+        self.a = self.b;
+        self.b = self.b + result;
+        
+        Some(result)
+    }
 }
 
 #[cfg(test)]
