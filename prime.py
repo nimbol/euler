@@ -216,3 +216,18 @@ def factors(n):
         res[n] += 1
     return dict(res)
 
+
+if __name__ == "__main__":
+    # Try invoking a function defined in this module, assuming all args are ints.
+    import sys, types
+
+    fn = locals()[sys.argv[1]]
+    result = fn(*(int(arg) for arg in sys.argv[2:]))
+
+    if isinstance(result, types.GeneratorType):
+        for x in result:
+            print "%s," % x,
+            sys.stdout.flush()
+        print
+    else:
+        print result
