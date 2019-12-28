@@ -1,18 +1,20 @@
-use std::collections::HashMap;
 use euler::math;
+use std::collections::HashMap;
 
 fn main() {
     println!("{}", solve(1..20));
 }
 
-fn solve<T: Iterator<Item=u64>>(seq: T) -> u64 {
+fn solve<T: Iterator<Item = u64>>(seq: T) -> u64 {
     let mut max_factors: HashMap<u64, u32> = HashMap::new();
-    let mut factors: Vec<_> = seq.flat_map(|n| math::prime_factors(n).into_iter()).collect();
+    let mut factors: Vec<_> = seq
+        .flat_map(|n| math::prime_factors(n).into_iter())
+        .collect();
 
     factors.sort();
     max_factors.extend(factors);
 
-    max_factors.into_iter().map(|(a,b)| a.pow(b)).product()
+    max_factors.into_iter().map(|(a, b)| a.pow(b)).product()
 }
 
 #[cfg(test)]

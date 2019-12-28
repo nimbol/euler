@@ -6,7 +6,7 @@ fn solve() -> u64 {
     let mut palindromes = vec![];
     for n1 in (901..=999).step_by(2) {
         let r = match n1 % 10 {
-            9 => (901..=n1-8),
+            9 => (901..=n1 - 8),
             7 => (907..=n1),
             3 => (903..=n1),
             _ => (0..=0),

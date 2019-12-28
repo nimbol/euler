@@ -48,16 +48,25 @@ mod tests {
 
     #[test]
     fn prime_factors_2() {
-        assert_eq!(prime_factors(2), [(2, 1)].iter().cloned().collect::<HashMap<_, _>>());
+        assert_eq!(
+            prime_factors(2),
+            [(2, 1)].iter().cloned().collect::<HashMap<_, _>>()
+        );
     }
 
     #[test]
     fn prime_factors_64() {
-        assert_eq!(prime_factors(64), [(2, 6)].iter().cloned().collect::<HashMap<_, _>>());
+        assert_eq!(
+            prime_factors(64),
+            [(2, 6)].iter().cloned().collect::<HashMap<_, _>>()
+        );
     }
 
     #[test]
     fn prime_factors_3() {
-        assert_eq!(prime_factors(3), [(3, 1)].iter().cloned().collect::<HashMap<_, _>>());
+        assert_eq!(
+            prime_factors(3),
+            [(3, 1)].iter().cloned().collect::<HashMap<_, _>>()
+        );
     }
 }

@@ -24,7 +24,7 @@ impl Iterator for Fibonacci {
         let result = self.a;
         self.a = self.b;
         self.b = self.b + result;
-        
+
         Some(result)
     }
 }

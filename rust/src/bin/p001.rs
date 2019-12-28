@@ -3,7 +3,7 @@ fn main() {
 }
 
 fn solve(n: u32) -> u32 {
-    (1..n).filter(|x| x%3==0 || x%5==0).sum()
+    (1..n).filter(|x| x % 3 == 0 || x % 5 == 0).sum()
 }
 
 #[cfg(test)]
