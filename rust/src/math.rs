@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn prime_factors(n: u64) -> HashMap<u64, u64> {
+pub fn prime_factors(n: u64) -> HashMap<u64, u32> {
     let mut result = HashMap::new();
     let mut n = n;
 
