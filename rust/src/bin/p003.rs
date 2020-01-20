@@ -1,11 +1,11 @@
-use euler::math;
+use euler::prime;
 
 fn main() {
     println!("{}", solve(600_851_475_143));
 }
 
 fn solve(n: u64) -> u64 {
-    match math::prime_factors(n).keys().max() {
+    match prime::factors(n).keys().max() {
         Some(&p) => p,
         None => 0,
     }

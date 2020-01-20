@@ -1,4 +1,4 @@
-use euler::math;
+use euler::prime;
 use std::collections::HashMap;
 
 fn main() {
@@ -8,7 +8,7 @@ fn main() {
 fn solve<T: Iterator<Item = u64>>(seq: T) -> u64 {
     let mut max_factors: HashMap<u64, u32> = HashMap::new();
     let mut factors: Vec<_> = seq
-        .flat_map(|n| math::prime_factors(n).into_iter())
+        .flat_map(|n| prime::factors(n).into_iter())
         .collect();
 
     factors.sort();
