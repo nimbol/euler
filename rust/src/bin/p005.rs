@@ -7,9 +7,7 @@ fn main() {
 
 fn solve<T: Iterator<Item = u64>>(seq: T) -> u64 {
     let mut max_factors: HashMap<u64, u32> = HashMap::new();
-    let mut factors: Vec<_> = seq
-        .flat_map(|n| prime::factors(n).into_iter())
-        .collect();
+    let mut factors: Vec<_> = seq.flat_map(|n| prime::factors(n).into_iter()).collect();
 
     factors.sort();
     max_factors.extend(factors);
