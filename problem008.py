@@ -22,4 +22,4 @@ string = ''.join('''
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450'''.split())
 
-print max(mul(int(s) for s in string[i:i+5]) for i in xrange(len(string)))
+print max(mul(int(s) for s in string[i:i+13]) for i in xrange(len(string)))
