@@ -59,9 +59,37 @@ impl Iterator for PrimeIterator {
     }
 }
 
+/// Compute primes using the sieve of Eratosthenes algorithm.
+pub fn sieve(limit: usize) -> Vec<usize> {
+    let sieve_size = limit / 2 - ((limit - 1) % 2);
+    let mut odds = vec![true; sieve_size];
+    let calc_limit = (limit as f64).sqrt() as usize;
+    for (i, p) in (3usize..=calc_limit).step_by(2).enumerate() {
+        if odds[i] {
+            (p.pow(2)..=limit)
+                .step_by(2 * p)
+                .for_each(|n| odds[(n - 3) / 2] = false);
+        }
+    }
+    let mut primes: Vec<usize> = odds
+        .iter()
+        .enumerate()
+        .filter_map(|(i, &p)| if p { Some(i * 2 + 3) } else { None })
+        .collect();
+    primes.insert(0, 2);
+    primes
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn sieve_limit_50() {
+        assert_eq!(
+            sieve(50),
+            vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        );
+    }
     #[test]
     fn iterator_take_15() {
         assert_eq!(
